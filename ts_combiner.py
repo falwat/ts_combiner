@@ -70,12 +70,11 @@ class TSCombiner(Mainwindow):
         if len(outfile) == 0:
             messagebox.showerror('Error', 'The output filename can not be empty!')
             return
-        with open(self.outfileVar.get(), 'wb') as fout:
+        with open(outfile, 'wb') as fout:
             for fn in self.infiles:
                 with open(fn, 'rb') as fin:
                     data = fin.read()
                     fout.write(data)
-                    print(fn)
                 if self.deleteInfilesVar.get():
                     os.remove(fn)
         messagebox.showinfo('Info', 'Process Done!')
